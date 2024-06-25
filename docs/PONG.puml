@@ -1,0 +1,64 @@
+@startuml pong
+class Player1 {
+  +points
+  +play()
+  +win()
+}
+
+class Player2 {
+  +points
+  +play()
+  +win()
+}
+
+class Ball {
+  +speed
+  +direction
+  +position
+  +size
+  +color
+  +bounce()
+  +move()
+  +collide()
+}
+
+class Paddle {
+  +position
+  +size
+  +color
+  +move()
+  +collide()
+}
+
+class Wall {
+  +position
+  +size
+  +color
+  +collide()
+}
+
+class Score {
+  +points
+  +display()
+  +add()
+}
+
+class Goal {
+  +position
+  +size
+  +collide()
+}
+
+Ball o-- Paddle
+Ball o-- Wall
+Ball *-- Score
+Ball o-- Goal
+Goal o-- Score
+Ball *-- Score
+Paddle o-- Wall
+Player1 -> Ball: move
+Ball -> Player2: collide
+Ball -> Player1: collide
+Player2 -> Ball: move
+
+@enduml
