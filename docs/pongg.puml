@@ -1,0 +1,59 @@
+@startuml pong
+class Juego{
+    -Ball
+    -Paddle
+    -Score
+    -SoundManager
+}
+
+class Ball {
+    - texture: Texture
+    - sprite: Sprite
+    - velX: float
+    - velY: float
+    + Ball(float, float)
+    + LoadTexture(string)
+    + Move()
+    + BounceX()
+    + BounceY()
+    + ResetPosition()
+  
+}
+
+class Paddle {
+    - texture: Texture
+    - sprite: Sprite
+    - rotation: float
+    - position: Vector2f
+    - scale: Vector2f
+    + Paddle(float, float)
+    + LoadTexture()
+    + Move() 
+
+}
+
+
+class Score {
+    - font: Font
+    - text: Text
+    - score: int
+    + Score()  
+}
+
+class SoundManager {
+    - sound: Sound
+    - buffer: SoundBuffer
+    + SoundManager()
+    + LoadSound()
+    + PlaySound()
+}
+
+Juego o-- Ball
+Juego o-- Paddle
+Juego o-- Score
+Juego o-- SoundManager
+Ball *-- Juego
+Paddle *-- Juego
+Paddle o-- Ball
+
+@enduml

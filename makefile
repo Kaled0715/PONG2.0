@@ -1,31 +1,20 @@
-# Definiciones de variables
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
-SFML_LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS = -std=c++11 -Wall -Iinclude
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
+OBJDIR = obj
 SRCDIR = src
-INCDIR = include
-BUILDDIR = obj
 BINDIR = bin
 
-SOURCES := $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(BUILDDIR)/%.o)
-EXECUTABLE = $(BINDIR)/main
+OBJS = $(OBJDIR)/Ball.o $(OBJDIR)/Paddle.o $(OBJDIR)/Score.o $(OBJDIR)/SoundManager.o $(OBJDIR)/Juego.o $(OBJDIR)/Main.o
+TARGET = $(BINDIR)/PongGame.exe
 
-# Regla para compilar el ejecutable
-$(EXECUTABLE): $(OBJECTS)
-	@mkdir -p $(BINDIR)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJECTS) -Llib $(SFML_LIBS)
+$(TARGET): $(OBJS)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
-# Regla para compilar los archivos objeto
-$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(BUILDDIR)
-	$(CXX) $(CXXFLAGS) -I$(INCDIR) -c -o $@ $<
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Regla para ejecutar el programa
-run: $(EXECUTABLE)
-	./$(EXECUTABLE)
-
-# Regla para limpiar los archivos compilados
+.PHONY: clean
 clean:
-	rm -rf $(BUILDDIR) $(BINDIR)
+	rm -f $(OBJDIR)/*.o $(TARGET)

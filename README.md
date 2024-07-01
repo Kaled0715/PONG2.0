@@ -15,7 +15,26 @@ Relive the golden era of video games with Pong and join millions of players who 
 Make every moment a moment of fun with Pong!
 
 
-![Imagen de penal](/assets/imagenes/cap.png)
+![Imagen](/assets/imagenes/cap.png)
+
+## Classes
+Game
+The main class that manages the game loop, events, updates and rendering.
+
+Ball
+Manages the logic and rendering of the ball.
+
+Paddle
+Manages the logic and rendering of the paddles.
+
+Score
+Manages the score of the players.
+
+SoundManager
+Manages the background music playback.
+
+![Imagen](/assets/imagenes/class.png)
+
 
 ## Resources Archives
     ./assets/images/ball.png: Texture of the ball.
@@ -36,11 +55,23 @@ Left Player:
  -SFML (Simple and Fast Multimedia Library)
  -C++ compatible compiler
 
-## Compiling and Running
-To compile and run the game, make sure you have SFML installed and configure your compiler to link the SFML libraries.
+## Compilation and Execution
+Compiling Instructions
+Make sure you have SFML installed on your system and configured correctly in your compiler.
 
-    g++ -o pong main.cpp -lsfml-graphics -lsfml-window -lsfml-system
-./pong
+Clone this repository or download the files to your local machine.
+
+Open a terminal in the project directory.
+
+Run the following command to compile the project:
+
+make
+
+## Running Instructions
+To run the game, use the following command in the terminal:
+
+./bin/PongGame.exe
+
 
 ## Flow diagram 
 
