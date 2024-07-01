@@ -12,6 +12,7 @@ Pong is a digital table tennis game played between two players. Each player cont
 Are you ready for the Challenge?
 Relive the golden era of video games with Pong and join millions of players who have enjoyed this classic since its creation. Don't wait any longer! Dare to try Pong and discover why it remains an undisputed favorite among video game enthusiasts.
 
+
 Make every moment a moment of fun with Pong!
 
 
